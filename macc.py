@@ -3,8 +3,8 @@ import pyttsx3
 from deep_translator import GoogleTranslator
 
 
-# Initialize TTS engine once (better performance)
-engine = pyttsx3.init()
+# Initialize TTS (Mac uses 'nsss')
+engine = pyttsx3.init(driverName='nsss')
 engine.setProperty('rate', 150)
 
 
@@ -36,7 +36,7 @@ def speech_to_text():
     return ""
 
 
-# Translate text
+# Translation (stable)
 def translate_text(text, target_language="hi"):
     try:
         translated = GoogleTranslator(source='auto', target=target_language).translate(text)
@@ -75,7 +75,7 @@ def display_language_options():
     return language_dict.get(choice, "hi")
 
 
-# Main function
+# Main
 def main():
     target_language = display_language_options()
 
